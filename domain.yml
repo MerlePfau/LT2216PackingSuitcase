@@ -1,0 +1,38 @@
+actions:
+- action_extract_input
+- action_play
+- action_restart
+- action_setup_game
+- utter_greeting
+
+entities:
+- user_words
+
+intents:
+- add_word:
+    triggers: action_extract_input
+- greet
+- affirm
+- deny
+- request_game:
+    triggers: action_setup_game
+    
+session_config:
+  carry_over_slots_to_new_session: false
+  session_expiration_time: 60
+  
+slots:
+  possible_words:
+    type: list
+  used_words:
+    type: list
+  user_words:
+    type: text
+    
+templates:
+  utter_greeting:
+  - text: "Hello dear opponent! Let's play a game. It's called I'm packing my suitcase.\
+      \ This is how it works: I will start by adding the first object: I'm packing a suitcase and I'm\
+      \ bringing shoes. You will then repeat this sentence and add another object\
+      \ to the suitcase, for example: I'm packing a suitcase and I'm bringing shoes\
+      \ and pants. Understood?"
